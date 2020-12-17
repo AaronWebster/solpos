@@ -7,11 +7,17 @@ cc_library(
     name = "solpos",
     srcs = ["solpos.cc"],
     hdrs = ["solpos.h"],
-    deps = [ ],
+    deps = [
+        "@com_google_absl//absl/base",
+        "@com_google_absl//absl/strings",
+    ],
 )
 
-cc_binary(
-    name = "stest",
-    srcs = ["stest.cc"],
-    deps = [":solpos" ],
+cc_test(
+    name = "solpos_test",
+    srcs = ["solpos_test.cc"],
+    deps = [
+        ":solpos",
+        "@com_google_googletest//:gtest_main",
+    ],
 )
